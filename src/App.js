@@ -31,8 +31,23 @@ function App() {
   return (
 <>
 <Header/>
-<AddContact addToList={addToList}/>
-<ContactCard contactList={list} removeContact={removeContact}/>
+
+     <Router>
+        <h3 className='text-center mt-5 '>
+          <hr />
+          <Link className='add' to="/AddContact">Click here to add contacts</Link>
+          <hr />
+        </h3>
+        <h3 className='text-center'>
+          <Link className='card' to="/ContactCard">View added Contacts</Link>
+        </h3>
+
+        <Routes>
+          <Route path='/AddContact' element={<AddContact addToList={addToList} />}></Route>
+          <Route path='/ContactCard' element={<ContactCard contactList={list} removeContact={removeContact} />}></Route>
+        </Routes>
+
+      </Router>
 </>
   );
 }
